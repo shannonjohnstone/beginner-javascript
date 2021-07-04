@@ -57,9 +57,9 @@ draw() // draw initial starting point
 // handlers
 const handleKey = (e) => {
   const { key } = e
-  // e.preventDefault(); // prevent window scrolling
+
   if (key?.includes("Arrow")) {
-    e.preventDefault();
+    e.preventDefault(); // prevent window scrolling
     draw(key)
   }
 }
@@ -71,9 +71,18 @@ const clearCanvas = () => {
   canvas.addEventListener("animationend", () => {
     canvas.classList.remove("shake")
     draw();
-  }, { once: true })
+  }, { once: true }) // setting once: true tells the event handler to remove itself once its finished
 }
 
 // handle arrow keys
 window.addEventListener('keydown', handleKey)
 shakeButton.addEventListener("click", clearCanvas)
+
+/**
+ * Notes
+ * 
+ * For the most part everything in this exercise standard already knew about JS
+ * 
+ * animationEnd - Knew about "animationEnd" but never had a reason to use it
+ * once: true - Knew about "once end" but never had a reason to use it
+ */
